@@ -1,10 +1,13 @@
 {
   "biome.enabled": true,
-  "biome.configurationPath": "./biome.jsonc",
+  "biome.lsp.bin": "./node_modules/@biomejs/biome/bin/biome",
+  "biome.requireConfiguration": true,
   "editor.formatOnSave": true,
   "editor.insertSpaces": true,
   "editor.detectIndentation": false,
   "editor.defaultFormatter": "biomejs.biome",
+  "javascript.format.enable": false,
+  "typescript.format.enable": false,
   "[typescript]": {
     "editor.defaultFormatter": "biomejs.biome"
   },
@@ -41,7 +44,7 @@
     "editor.insertSpaces": true
   },
   "editor.codeActionsOnSave": {
-    "source.fixAll.biome": "always",
-    "source.organizeImports.biome": "always"
+    "source.fixAll.biome": "explicit",
+    "source.organizeImports.biome": "explicit"
   }
 }
