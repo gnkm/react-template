@@ -4,8 +4,10 @@ TypeScript + React 向けの SPA テンプレートです。Vite 8、TanStack Ro
 
 ## 前提
 
-- Node.js `>=24.14.0`（[`.node-versions`](./.node-versions) 参照）
+- Node.js `>=24.14.0`（[`.tool-versions`](./.tool-versions) 参照）
 - [pnpm](https://pnpm.io/) `11.6.0`（[`packageManager`](./package.json) 参照）
+
+`mise install` などで指定できます。
 
 ## セットアップ
 
