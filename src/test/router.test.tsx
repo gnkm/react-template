@@ -1,6 +1,7 @@
 import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, test } from "vitest";
+import { THEME_STORAGE_KEY, useThemeStore } from "@/stores/theme-store";
 import { renderWithRouter } from "@/test/render-with-router";
 
 describe("Router", () => {
@@ -36,5 +37,24 @@ describe("Router", () => {
     expect(
       screen.getByRole("status", { name: "カウンター" }),
     ).toHaveTextContent("1");
+  });
+
+  test("ヘッダーのテーマ切り替えボタンでダークモードとライトモードを切り替えられる", async () => {
+    const user = userEvent.setup();
+
+    await renderWithRouter("/");
+
+    const toggleButton = screen.getByRole("button", {
+      name: "ダークモードに切り替え",
+    });
+
+    await user.click(toggleButton);
+
+    expect(
+      screen.getByRole("button", { name: "ライトモードに切り替え" }),
+    ).toBeInTheDocument();
+    expect(useThemeStore.getState().theme).toBe("dark");
+    expect(window.localStorage.getItem(THEME_STORAGE_KEY)).toBe("dark");
+    expect(document.documentElement.classList.contains("dark")).toBe(true);
   });
 });

@@ -11,7 +11,7 @@ export function PageLayout({ children, description, title }: PageLayoutProps) {
   return (
     <div className="w-full max-w-lg space-y-6">
       <header className="space-y-2">
-        <h1 className="text-balance text-2xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-50">
+        <h1 className="text-balance text-2xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-300">
           {title}
         </h1>
         {description ? (
@@ -30,7 +30,7 @@ export function AppShell({ children }: { children: ReactNode }) {
     <div
       className={cn(
         "min-h-screen bg-linear-to-b from-zinc-50 to-zinc-100/90",
-        "dark:from-zinc-950 dark:to-zinc-900",
+        "dark:from-zinc-900 dark:to-zinc-800",
       )}
     >
       {children}

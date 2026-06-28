@@ -39,7 +39,7 @@ export function HomePage() {
                 className="mt-0.5 size-5 shrink-0 text-amber-500 dark:text-amber-400"
               />
               <span className="min-w-0 flex-1 space-y-1">
-                <span className="block font-semibold text-zinc-900 dark:text-zinc-50">
+                <span className="block font-semibold text-zinc-900 dark:text-zinc-300">
                   {demo.title}
                 </span>
                 <span className="block text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">

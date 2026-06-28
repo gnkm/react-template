@@ -18,13 +18,13 @@ export function CounterPage() {
       <section aria-labelledby="counter-heading" className={cardClassName}>
         <div className="space-y-2">
           <h2
-            className="text-base font-semibold text-zinc-900 dark:text-zinc-50"
+            className="text-base font-semibold text-zinc-900 dark:text-zinc-300"
             id="counter-heading"
           >
             カウンターデモ
           </h2>
           <p className={hintClassName}>
-            <strong className="font-medium text-zinc-800 dark:text-zinc-200">
+            <strong className="font-medium text-zinc-800 dark:text-zinc-300">
               操作の流れ
             </strong>
             <br />
@@ -41,7 +41,7 @@ export function CounterPage() {
             <p
               aria-label="カウンター"
               aria-live="polite"
-              className="font-semibold text-4xl text-zinc-900 tabular-nums tracking-tight dark:text-zinc-50"
+              className="font-semibold text-4xl text-zinc-900 tabular-nums tracking-tight dark:text-zinc-300"
               role="status"
             >
               {count}

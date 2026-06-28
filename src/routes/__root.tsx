@@ -6,6 +6,7 @@ import {
 } from "@tanstack/react-router";
 import { Sparkles } from "lucide-react";
 import { AppShell } from "@/app/page-layout";
+import { ThemeToggle } from "@/app/theme-toggle";
 import { navLinkActiveClassName, navLinkClassName } from "@/app/ui";
 import { cn } from "@/lib/cn";
 
@@ -26,16 +27,19 @@ function RootLayout() {
 
   return (
     <AppShell>
-      <header className="border-b border-zinc-200/80 bg-white/80 backdrop-blur-sm dark:border-zinc-800/80 dark:bg-zinc-950/80">
+      <header className="border-b border-zinc-300 bg-white/80 backdrop-blur-sm dark:border-zinc-700 dark:bg-zinc-900/80">
         <div className="mx-auto flex w-full max-w-3xl flex-col gap-4 px-6 py-4">
-          <div className="flex items-center gap-2">
-            <Sparkles
-              aria-hidden="true"
-              className="size-5 text-amber-500 dark:text-amber-400"
-            />
-            <p className="font-semibold text-zinc-900 dark:text-zinc-50">
-              React App Template
-            </p>
+          <div className="flex items-center justify-between gap-4">
+            <div className="flex items-center gap-2">
+              <Sparkles
+                aria-hidden="true"
+                className="size-5 text-amber-500 dark:text-amber-400"
+              />
+              <p className="font-semibold text-zinc-900 dark:text-zinc-300">
+                React App Template
+              </p>
+            </div>
+            <ThemeToggle />
           </div>
 
           <nav aria-label="メイン">

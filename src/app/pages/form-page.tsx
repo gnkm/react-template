@@ -38,13 +38,13 @@ export function FormPage() {
       <section aria-labelledby="form-heading" className={cardClassName}>
         <div className="space-y-2">
           <h2
-            className="text-base font-semibold text-zinc-900 dark:text-zinc-50"
+            className="text-base font-semibold text-zinc-900 dark:text-zinc-300"
             id="form-heading"
           >
             名前入力デモ
           </h2>
           <p className={hintClassName}>
-            <strong className="font-medium text-zinc-800 dark:text-zinc-200">
+            <strong className="font-medium text-zinc-800 dark:text-zinc-300">
               操作の流れ
             </strong>
             <br />
@@ -114,10 +114,10 @@ export function FormPage() {
               className="rounded-lg border border-emerald-200 bg-emerald-50 px-4 py-3 dark:border-emerald-900/50 dark:bg-emerald-950/40"
               role="status"
             >
-              <p className="text-sm font-medium text-emerald-900 dark:text-emerald-100">
+              <p className="text-sm font-medium text-emerald-900 dark:text-emerald-300">
                 送信成功
               </p>
-              <p className="mt-1 text-sm text-emerald-800 dark:text-emerald-200">
+              <p className="mt-1 text-sm text-emerald-800 dark:text-emerald-400">
                 「{savedName}」を受け取りました。Zod の検証を通過し、React Hook
                 Form の <code className="text-xs">handleSubmit</code>{" "}
                 が実行されました。
