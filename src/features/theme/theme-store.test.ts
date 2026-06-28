@@ -6,7 +6,7 @@ import {
   readStoredTheme,
   THEME_STORAGE_KEY,
   useThemeStore,
-} from "@/stores/theme-store";
+} from "./theme-store";
 
 describe("theme-store", () => {
   beforeEach(() => {

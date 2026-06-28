@@ -27,16 +27,36 @@ pnpm run dev
 | `pnpm run lint:hooks` | ESLint（React Hooks / Compiler ルール） |
 | `pnpm run ci` | typecheck + lint + test + build |
 
+## テンプレートの使い始め方
+
+同梱のデモ（ショーケース）は 1 か所にまとまっています。自分のアプリを作るときは次を削除/編集するだけです。
+
+1. `src/features/demo/` を削除
+2. `src/routes/demo.tsx` を削除
+3. `src/routes/__root.tsx` の `navItems` からデモ用の行を削除
+4. `src/routes/index.tsx`（ホーム）を書き換えて開発を開始
+5. （API モックが不要なら）`src/mocks/handlers.ts` のデモハンドラを削除
+
+`stores/` や `hooks/` などは必要になったときに追加してください。
+
 ## ディレクトリ構成
+
+型ベースを基本に、機能ごとにまとめたいものは `features/` へ置く構成です。
 
 ```text
 src/
-├── app/           # Providers、レイアウト、ページコンポーネント
-├── lib/           # ユーティリティ（cn など）
-├── routes/        # TanStack Router ファイルベースルート
-├── stores/        # Zustand ストア
+├── app/           # アプリ層: Providers（QueryClient / テーマ同期）
+├── components/    # 横断的に使う汎用コンポーネント
+│   ├── layout/    #   AppShell / PageLayout
+│   └── ui/        #   className 定数（Button / Input / Card など）
+├── features/      # 機能単位のまとまり
+│   ├── theme/     #   ダーク/ライト切替（store・ThemeToggle・ThemeSync）
+│   └── demo/      #   ★同梱機能のショーケース（不要なら削除）
+├── lib/           # フレームワーク非依存ユーティリティ（cn など）
+├── mocks/         # MSW ハンドラ（dev / テスト共通）
+├── routes/        # TanStack Router ファイルベースルート（ページ実体もここ）
 ├── styles/        # グローバル CSS（Tailwind CSS v4）
-└── test/          # テスト setup、MSW、Router テスト用ヘルパー
+└── test/          # テスト setup、Router テスト用ヘルパー
 ```
 
 ## 採用スタック
@@ -51,6 +71,7 @@ src/
 | ビルド | Vite 8 + React Compiler |
 | Lint / Format | Biome |
 | React Compiler lint | ESLint (`eslint-plugin-react-hooks`) |
+| API モック | MSW（dev の `worker.start` とテストの `setupServer` で共通ハンドラを使用） |
 | テスト | Vitest + Testing Library + MSW + happy-dom |
 | Git hooks | lefthook |
 
@@ -66,11 +87,18 @@ src/
 
 | パス | 内容 |
 |------|------|
-| `/` | デモ一覧（各ページへのリンク） |
-| `/counter` | Zustand カウンターデモ |
-| `/form` | React Hook Form + Zod デモ |
+| `/` | ホーム（このテンプレートの説明） |
+| `/demo` | 同梱機能のショーケース（Zustand / React Hook Form + Zod / TanStack Query + MSW） |
 
-ページ本体は `src/app/pages/` に置き、`src/routes/` から読み込む構成です。新しいページを追加するときは両方にファイルを追加してください。
+シンプルなページはルートファイルにコンポーネントを直接書きます（`src/routes/index.tsx` 参照）。規模が大きくなったら `src/features/<機能名>/` に切り出して、ルートファイルから読み込んでください。
+
+## API モック（MSW）
+
+`src/mocks/handlers.ts` のハンドラを、開発時（`src/mocks/browser.ts`）とテスト時（`src/mocks/node.ts`）で共通利用します。
+
+- 開発時: `src/main.tsx` の `enableMocking()` が dev のときだけ Service Worker を起動します。定義していないリクエストは素通しします（`onUnhandledRequest: "bypass"`）。
+- Service Worker 本体は `public/mockServiceWorker.js`（`pnpm exec msw init public` で生成。コミット対象）。
+- モックが不要なら `src/main.tsx` の `enableMocking()` 呼び出しを削除してください。
 
 ## lefthook
 

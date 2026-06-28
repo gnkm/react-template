@@ -6,7 +6,13 @@
     "useIgnoreFile": true
   },
   "files": {
-    "includes": ["**", "!!**/dist", "!!**/coverage", "!!**/routeTree.gen.ts"]
+    "includes": [
+      "**",
+      "!!**/dist",
+      "!!**/coverage",
+      "!!**/routeTree.gen.ts",
+      "!!**/mockServiceWorker.js"
+    ]
   },
   "formatter": {
     "enabled": true,

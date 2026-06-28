@@ -1,42 +1,24 @@
 import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, test } from "vitest";
-import { THEME_STORAGE_KEY, useThemeStore } from "@/stores/theme-store";
+import { THEME_STORAGE_KEY, useThemeStore } from "@/features/theme";
 import { renderWithRouter } from "@/test/render-with-router";
 
 describe("Router", () => {
-  test("ホームから Zustand デモへ遷移できる", async () => {
+  test("ホームからデモへ遷移できる", async () => {
     const user = userEvent.setup();
 
     await renderWithRouter("/");
 
     expect(
-      screen.getByRole("heading", { name: "デモ一覧" }),
+      screen.getByRole("heading", { name: "React App Template" }),
     ).toBeInTheDocument();
 
-    await user.click(screen.getByRole("link", { name: "Zustand デモを開く" }));
+    await user.click(screen.getByRole("link", { name: "デモ" }));
 
     expect(
-      screen.getByRole("heading", { name: "Zustand（クライアント状態）" }),
+      await screen.findByRole("heading", { name: "同梱機能のショーケース" }),
     ).toBeInTheDocument();
-  });
-
-  test("Zustand の値はページ遷移後も保持される", async () => {
-    const user = userEvent.setup();
-
-    await renderWithRouter("/counter");
-
-    await user.click(screen.getByRole("button", { name: "+1 する" }));
-    expect(
-      screen.getByRole("status", { name: "カウンター" }),
-    ).toHaveTextContent("1");
-
-    await user.click(screen.getByRole("link", { name: "Form" }));
-    await user.click(screen.getByRole("link", { name: "Zustand" }));
-
-    expect(
-      screen.getByRole("status", { name: "カウンター" }),
-    ).toHaveTextContent("1");
   });
 
   test("ヘッダーのテーマ切り替えボタンでダークモードとライトモードを切り替えられる", async () => {

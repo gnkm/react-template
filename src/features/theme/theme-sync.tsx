@@ -1,9 +1,5 @@
 import { useEffect, useRef } from "react";
-import {
-  applyTheme,
-  getInitialTheme,
-  useThemeStore,
-} from "@/stores/theme-store";
+import { applyTheme, getInitialTheme, useThemeStore } from "./theme-store";
 
 export function ThemeSync() {
   const theme = useThemeStore((state) => state.theme);

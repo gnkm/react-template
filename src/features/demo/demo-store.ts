@@ -1,12 +1,12 @@
 import { create } from "zustand";
 
-type CounterState = {
+type DemoCounterState = {
   count: number;
   increment: () => void;
   reset: () => void;
 };
 
-export const useCounterStore = create<CounterState>((set) => ({
+export const useDemoCounterStore = create<DemoCounterState>((set) => ({
   count: 0,
   increment: () => {
     set((state) => ({ count: state.count + 1 }));

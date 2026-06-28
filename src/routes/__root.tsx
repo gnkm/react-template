@@ -5,15 +5,18 @@ import {
   useRouterState,
 } from "@tanstack/react-router";
 import { Sparkles } from "lucide-react";
-import { AppShell } from "@/app/page-layout";
-import { ThemeToggle } from "@/app/theme-toggle";
-import { navLinkActiveClassName, navLinkClassName } from "@/app/ui";
+import { AppShell } from "@/components/layout/app-shell";
+import {
+  navLinkActiveClassName,
+  navLinkClassName,
+} from "@/components/ui/styles";
+import { ThemeToggle } from "@/features/theme";
 import { cn } from "@/lib/cn";
 
 const navItems = [
   { label: "ホーム", to: "/" as const },
-  { label: "Zustand", to: "/counter" as const },
-  { label: "Form", to: "/form" as const },
+  // デモを削除するときは、この行と src/routes/demo.tsx, src/features/demo を消してください。
+  { label: "デモ", to: "/demo" as const },
 ];
 
 export const Route = createRootRoute({
